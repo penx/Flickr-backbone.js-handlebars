@@ -1,2 +1,22 @@
-<p>Your content here.</p>
-
+<div class="page-header">
+	<h1>Flickr Public Feed</h1>
+</div>
+{{#if tags}}<p>Tags: {{tags}}</p>{{/if}}
+ 
+{{#if collection}}
+	<ul class="media-list">
+	{{#each collection}}
+		<li class="media">
+			<a class="pull-left open-photo" href="#{{@index}}"><img src="{{media.m}}" class="media-object img-rounded"></a>
+			<div class="media-body">
+				<h2 class="media-heading"><a href="#{{@index}}" class="open-photo">{{title}}</a></h2>
+				<p>Published {{dateformat published}}</p> 
+				
+				<p><a href="http://www.flickr.com/photos/{{author_id}}">{{author}}</a> <a href="{{link}}">View on Flickr</a></p>
+			</div>
+		</li>
+	{{/each}}
+	</ul>
+{{else}}
+	<p>Loading...</p>
+{{/if}}

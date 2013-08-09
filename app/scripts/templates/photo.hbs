@@ -1,2 +1,24 @@
-<p>Your content here.</p>
-
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">back</button>
+        <h4 class="modal-title">{{title}}</h4>
+        <p><a href="http://www.flickr.com/photos/{{author_id}}">{{author}}</a> | Published {{published}}</p>
+      </div>
+      <div class="modal-body">
+		<div class="media">
+			<div class="pull-left" ><img src="{{media.m}}" class="media-object img-rounded"></div>
+			<div class="media-body">
+				{{photoDescription description}}
+			</div>
+		</div>
+      </div>
+      <div class="modal-footer">
+      		{{#if tags}}
+			<p>Tags: {{#eachTag tags}}<a href="#/tag/{{this}}">{{this}}</a> {{/eachTag}}</p>
+			{{/if}}
+      </div>
+    </div>
+  </div>
+</div>

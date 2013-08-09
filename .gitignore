@@ -7,3 +7,7 @@ app/bower_components
 test/bower_components/
 
 *.sublime-workspace
+
+app/.DS_Store
+
+app/scripts/.DS_Store
