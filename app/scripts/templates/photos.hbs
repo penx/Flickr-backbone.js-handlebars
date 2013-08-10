@@ -10,9 +10,18 @@
 			<a class="pull-left open-photo" href="#{{@index}}"><img src="{{media.m}}" class="media-object img-rounded"></a>
 			<div class="media-body">
 				<h2 class="media-heading"><a href="#{{@index}}" class="open-photo">{{title}}</a></h2>
-				<p>Published {{dateformat published}}</p> 
 				
-				<p><a href="http://www.flickr.com/photos/{{author_id}}">{{author}}</a> <a href="{{link}}">View on Flickr</a></p>
+				<ul class="properties">
+					<li>
+						<a href="http://www.flickr.com/photos/{{author_id}}">{{authorName author}}</a>
+					</li>
+					<li class="published">
+						<time datetime="{{published}}">{{dateformat published}}</time></span>
+					</li>
+					<li>
+						<a href="{{link}}">View on Flickr</a>
+					</li>
+				</ul>
 			</div>
 		</li>
 	{{/each}}

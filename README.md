@@ -28,15 +28,18 @@ TODO:
 
 answer yes to Twitter Bootstrap and RequireJS
 
+Use yeoman to create models, collections, views and routers:
+
 	yo backbone:model photo
 	yo backbone:collection photo
 	yo backbone:view photo
 	yo backbone:view photos
 	yo backbone:router router
 
-* If you're using Sublime, open the project path and save as a new project
-* Edit the sublime-project file and set the path to './app'
-* If using source control, remember to ignore the .sublime-workspace file
+Add JavaScript library dependencies with bower:
+
+	bower install momentjs
+
 * Clean up the sample content from index.html and add an id to the container, i.e.:
 
 		<div class="container" id="content">

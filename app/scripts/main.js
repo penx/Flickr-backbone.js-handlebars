@@ -26,13 +26,24 @@ require.config({
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
         bootstrap: 'vendor/bootstrap',
-        handlebars: '../bower_components/handlebars/handlebars'
+        handlebars: '../bower_components/handlebars/handlebars',
+        moment: '../bower_components/moment/moment'
     }
 });
 
 require([
-    'backbone', 'router'
-], function (Backbone, AppRouter) {
+    'backbone', 'router', 'handlebars', 'moment'
+], function (Backbone, AppRouter, Handlebars, Moment) {
     var router = new AppRouter;
+
+    Handlebars.registerHelper( {
+        authorName: function(author) {
+            return /\(([^\)]*)\)/.exec(author)[1];
+        },
+        dateformat: function(date) {
+            return moment(date).format('Do MMMM YYYY [at] HH:mm');
+        }
+    });
+
     Backbone.history.start();
 });

@@ -24,17 +24,14 @@ define([
         	"click a[href^=#]" : "close"
         },
      	helpers: {
-        	//TODO: move this into generic helpers
-	        dateformat: function(date) {
-	        	return date + "TODO: format";
-	        },
 	        photoDescription: function(html) {
-	        	return new Handlebars.SafeString($($.parseHTML(html)).find('>:first-child').remove().html());
+                var descContent = $('<div></div>').append($.parseHTML(html));
+                descContent.find('>p:first-child, >p:nth-child(2)').remove();
+	        	return new Handlebars.SafeString(descContent.html());
 	        },
 	        eachTag: function(tags, block) {
         	    var tagHtml = '',
         	    tagArray = tags.split(" ");
-
 				for(var n = 0; n < tagArray.length; n++) {
 			        tagHtml += block.fn(tagArray[n]);					
 				}

@@ -14,7 +14,7 @@ define([
         el: $("#content"), 
         render: function() {
         	if(this.collection) {
-	        	this.$el.html(this.template({collection: this.collection.toJSON()}, {helpers: this.helpers}));
+	        	this.$el.html(this.template({collection: this.collection.toJSON()}));
         	} else {
 	        	this.$el.html(this.template({}, {helpers: this.helpers}));
         	}
@@ -24,15 +24,9 @@ define([
         },
         open: function(e) {
         	e.preventDefault();
-            var photoView = new PhotoView( {model : this.collection.models[$(e.target).attr('href').substr(1)] });
+            var photoView = new PhotoView( {model : this.collection.models[$(e.currentTarget).attr('href').substr(1)] });
             photoView.render();
-        },
-        helpers: {
-        	//TODO: move this into generic helpers
-	        dateformat: function(date) {
-	        	return date + "TODO: format";
-	        }
-        }
+        } 
     });
 
     return PhotosView;

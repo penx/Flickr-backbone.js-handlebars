@@ -11,3 +11,5 @@ test/bower_components/
 app/.DS_Store
 
 app/scripts/.DS_Store
+
+.DS_Store
