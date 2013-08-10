@@ -1,21 +1,36 @@
 #Flickr-backbone.js-handlebars
 
-A simple client for the Flickr Public API using Backbone.js, Handelbars, RequireJS, Twitter Bootstrap and Yeoman.
-
+A simple client for the Flickr Public API using Backbone.js, Handlebars, RequireJS, Twitter Bootstrap and Yeoman.
 
 ## Installation
 
-To download and run this site, use the following commands:
+###Prerequisites
+To download and run this site, install these prerequisites manually:
 
-TODO:
+- node.js and npm from http://nodejs.org
+- Ruby and gem from http://www.ruby-lang.org
+
+Install compass using:
+
+	gem install compass
+
+###Clone, build and run
+Use the following commands:
+
+	git clone https://github.com/penx/Flickr-backbone.js-handlebars.git
+	cd Flickr-backbone.js-handlebars
+	npm install
+	bower install
+	grunt server
 
 ## Tutorial
 
 ###Install prerequisites
 
-Install node.js and npm from http://nodejs.org
+Install the following manually:
 
-Install Ruby and gem from http://www.ruby-lang.org
+- node.js and npm from http://nodejs.org
+- Ruby and gem from http://www.ruby-lang.org
 
 Install yeoman, backbone-generator and compass using:
 
@@ -58,7 +73,7 @@ Move the router from app/scripts/routes/router-router.js to app/scripts/router.j
 ###Upgrade to Bootstrap 3.0
 (this step can be skipped)
 
-At the time of writing, bootstrap 2.3.2 is installed by the yeoman generator. There are some issues with Bootstrap's modal dialog on mobile devices that are fixed in 3.0RC, so we're going to upgrade by editing bower.json and adding another dependency:
+At the time of writing, bootstrap 2.3.0 is installed by the yeoman generator. There are some issues with Bootstrap's modal dialog on mobile devices in 2.3.0 that are fixed in 3.0RC, so we're going to upgrade by editing bower.json and adding another dependency:
 
     "bootstrap": "~3.0.0"
 
@@ -66,10 +81,19 @@ We can also remove:
 
     "sass-bootstrap": "~2.3.0",
 
-And we can comment out the first 2 lines in app/styles/main.scss, :
+Comment out the first 2 lines in app/styles/main.scss, :
 
 	// $iconSpritePath: '/images/glyphicons-halflings.png';
 	// @import 'sass-bootstrap/lib/bootstrap';
+
+Add a link to the bootstrap stylesheet in app/index.html:
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+Finally, change the path to bootstrap in app/scripts/main.js 
+
+    bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
+
 
 ###Start coding
 
