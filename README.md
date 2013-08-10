@@ -13,20 +13,21 @@ TODO:
 
 ###Install prerequisites
 
-* Install node.js and npm - http://nodejs.org
-* Install Ruby and gem - http://www.ruby-lang.org
-* Install yeoman, backbone-generator and compass using:
+Install node.js and npm from http://nodejs.org
 
-		npm install -g yo
-		npm install -g generator-backbone
-		gem install compass
+Install Ruby and gem from http://www.ruby-lang.org
+
+Install yeoman, backbone-generator and compass using:
+
+	npm install -g yo
+	npm install -g generator-backbone
+	gem install compass
 
 ###Setup a new project
 
-	cd ~/project-path
-	yo backbone --template-framework=handlebars
+From the command line, from the folder you want to create the new project, call the following and answer yes to Twitter Bootstrap and RequireJS:
 
-answer yes to Twitter Bootstrap and RequireJS
+	yo backbone --template-framework=handlebars
 
 Use yeoman to create models, collections, views and routers:
 
@@ -40,91 +41,96 @@ Add JavaScript library dependencies with bower:
 
 	bower install momentjs
 
-* Clean up the sample content from index.html and add an id to the container, i.e.:
+Clean up the sample content from index.html, add an id to the container and add a new container for an overlay i.e.:
 
-		<div class="container" id="content">
-		</div>
+	<div class="container" id="content">
+	</div>
+    <div id="overlay">
+    </div>
 
-* Move the router from /app/scripts/routes/router-router.js to /app/scripts/router.js and delete the routes directory
-* Now's a good time to check in to source control
+Move the router from /app/scripts/routes/router-router.js to /app/scripts/router.js and delete the routes directory.
 
+Inside /app/scripts, edit the following files and make the changes listed to match the contents of the code in this repository:
 
-* Edit the following files, and make the following changes to match the contents of this repository:
+* collections/photo-collection.js
 
+	- The url of the photo feed.
+	- A parse function to select a child object from the response to get the collection we want.
 
-	* /app/scripts/collections/photo-collection.js
+* templates/photo.hbs
 
-		* the url of the photo feed
-		* a parse function to select a child object from the response to get the collection we want
+	- A bootstrap modal-dialog to display a single photo
 
+* templates/photos.hbs
 
-	* /app/scripts/templates/photo.hbs
+	- a bootstrap media-list containing a collection of photos
 
-		- a bootstrap modal-dialog to display a single photo
+* views/photo-view.js
 
-	* /app/scripts/templates/photos.hbs
+	- add a render function to show the modal dialog, as we're using Bootstrap we also have to clean up any previous modal dialogs:
 
-		- a bootstrap media-list containing a collection of photos
+			render: function() {
+	        	var modalTemplate = this.template(this.model.toJSON(), {helpers: this.helpers}),
+		        	modalWindow;
+		        $('body > .modal, body > .modal-backdrop').remove();
+	        	this.$el.html(modalTemplate).find('.modal').modal();
+	        }
 
-	* /app/scripts/views/photo-view.js
+	- set the element we're appending to to $("#content")
+	- add some helpers used by the handlebars template 
 
-		 - add a render function to show the modal dialog:
+* views/photos-view.js
 
-			    render: function() {
-			    	var modalWindow = this.template(this.model.toJSON(), {helpers: this.helpers});
-			    	this.$el.append(modalWindow).find('.modal').on('hidden.bs.modal', function(){
-			    		$(this).remove();
-			    	}).modal();
-			    }
+	- pass in bootstrap and the photo-view
+	- set the element we're appending to to $("#content")
+	- add a render function that passes the collection (if it exists) to the handlebars template
+	- add an 'open' event and us it to load the photo-view (modal window)
+	- add some helpers used by the handlebars template 
 
-		 - set the element we're appending to to $("#content")
-		 - add some helpers used by the handlebars template 
+* main.js
 
-	* /app/scripts/views/photos-view.js
-
-		- pass in bootstrap and the photo-view
-		- set the element we're appending to to $("#content")
-		- add a render function that passes the collection (if it exists) to the handlebars template
-		- add an 'open' event and us it to load the photo-view (modal window)
-		- add some helpers used by the handlebars template 
-
-	* /app/scripts/main.js
-
-		- pass in and initialise the router:
+	- pass in and initialise the router and Handlebars helpers:
 
 			require([
-			    'backbone', 'router'
-			], function (Backbone, AppRouter) {
+			    'backbone', 'router', 'handlebars', 'moment'
+			], function (Backbone, AppRouter, Handlebars, Moment) {
 			    var router = new AppRouter;
+
+			    Handlebars.registerHelper( {
+			    	...
+			    });
+
 			    Backbone.history.start();
 			});
 
-	* /app/scripts/router.js
-		- add two routes:
+* router.js
+	- add two routes:
 
-				routes: {
-				    "": "defaultRoute",
-				    "tag/:id": "photos"//,
-				},
-				defaultRoute: function() {
-				    return this.photos('');
-				},
-				photos: function(params) {
-				    var photosView = new PhotosView({collection: this.photoCollection}),
-				        photoCollection = this.photoCollection;
-				    photoCollection.tags = params;
-				    photoCollection.fetch({
-				        success: function() {
-				            photosView.collection = photoCollection;
-				            photosView.render();
-				        }
-				    });
-				}
+			routes: {
+			    "": "defaultRoute",
+			    "tag/:id": "photos"//,
+			},
+			defaultRoute: function() {
+			    return this.photos('');
+			},
+			photos: function(params) {
+			    var photosView = new PhotosView({collection: this.photoCollection}),
+			        photoCollection = this.photoCollection;
+			    photoCollection.tags = params;
+	            photosView.render();
+			    photoCollection.fetch({
+			        success: function() {
+			            photosView.collection = photoCollection;
+			            photosView.render();
+			        }
+			    });
+			}
 
-	    - pass in 'views/photos-view' and 'collections/photo-collection'
+    - pass in 'views/photos-view' and 'collections/photo-collection'
 
+Finally, build and run the project
 
-* Finally, run `grunt server`
+	grunt server
 
 
 ##Creating a production ready site
