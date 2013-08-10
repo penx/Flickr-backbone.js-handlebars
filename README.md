@@ -37,7 +37,11 @@ Use yeoman to create models, collections, views and routers:
 	yo backbone:view photos
 	yo backbone:router router
 
-Add JavaScript library dependencies with bower:
+Add JavaScript library dependencies with bower, edit bower.json and add:
+
+    "moment": "~2.1.0"
+
+Then run:
 
 	bower install momentjs
 
@@ -48,9 +52,28 @@ Clean up the sample content from index.html, add an id to the container and add 
     <div id="overlay">
     </div>
 
-Move the router from /app/scripts/routes/router-router.js to /app/scripts/router.js and delete the routes directory.
+Move the router from app/scripts/routes/router-router.js to app/scripts/router.js and delete the routes directory.
 
-Inside /app/scripts, edit the following files and make the changes listed to match the contents of the code in this repository:
+
+###Upgrade to Bootstrap 3.0
+(this step can be skipped)
+
+At the time of writing, bootstrap 2.3.2 is installed by the yeoman generator. There are some issues with Bootstrap's modal dialog on mobile devices that are fixed in 3.0RC, so we're going to upgrade by editing bower.json and adding another dependency:
+
+    "bootstrap": "~3.0.0"
+
+We can also remove:
+
+    "sass-bootstrap": "~2.3.0",
+
+And we can comment out the first 2 lines in app/styles/main.scss, :
+
+	// $iconSpritePath: '/images/glyphicons-halflings.png';
+	// @import 'sass-bootstrap/lib/bootstrap';
+
+###Start coding
+
+Inside app/scripts, edit the following files and make the changes listed to match the contents of the code in this repository:
 
 * collections/photo-collection.js
 

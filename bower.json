@@ -1,8 +1,8 @@
 {
   "name": "flickr-backbone-js-handlebars",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "dependencies": {
-    "sass-bootstrap": "~2.3.0",
+    "bootstrap": "~3.0.0",
     "jquery": "~1.9.0",
     "underscore": "~1.4.3",
     "backbone": "~1.0.0",

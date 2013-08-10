@@ -25,7 +25,7 @@ require.config({
         jquery: '../bower_components/jquery/jquery',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
-        bootstrap: 'vendor/bootstrap',
+        bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
         handlebars: '../bower_components/handlebars/handlebars',
         moment: '../bower_components/moment/moment'
     }
