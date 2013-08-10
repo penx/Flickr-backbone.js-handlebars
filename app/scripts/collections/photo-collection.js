@@ -11,7 +11,6 @@ define([
     model: PhotoModel,
     tags: '',
     parse: function(response) {
-      console.log(response);
       return response.items;
     },
     url: function() {

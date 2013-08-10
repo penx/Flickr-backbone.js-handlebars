@@ -9,19 +9,16 @@ define([
     'use strict';
     var PhotoView = Backbone.View.extend({
         template: JST['app/scripts/templates/photo.hbs'],
-        el: $("#content"),
-        modalWindow : null,
+        el: $("#overlay"), 
         render: function() {
         	var modalTemplate = this.template(this.model.toJSON(), {helpers: this.helpers}),
-	        	modalWindow = this.$el.append(modalTemplate).find('.modal');
-        	this.modalWindow = modalWindow;
-
-        	this.modalWindow.on('hidden.bs.modal', function(){
-        		modalWindow.remove();
-        	}).modal();
+	        	modalWindow;
+	        //twitter bootstrap moves modal html outside of view element, remove previous modals from the dom before creating a new one:
+	        $('body > .modal, body > .modal-backdrop').remove();
+        	this.$el.html(modalTemplate).find('.modal').modal();
         },
         close: function() {
-        	this.modalWindow.modal('hide');
+        	this.$el.find('.modal').modal('hide');
         },
         events: {
         	"click a[href^=#]" : "close"

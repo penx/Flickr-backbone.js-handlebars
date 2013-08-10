@@ -2,7 +2,8 @@
 	"folders":
 	[
 		{
-			"path": "./app"
+			"path": "./app",
+	        "folder_exclude_patterns": ["bower_components"]
 		}
 	]
 }
