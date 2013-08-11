@@ -191,5 +191,14 @@ There was a minor bug in the yeoman generator/backbone [which I think](https://g
 2. compile using `grunt` or compile and run using `grunt server:dist`
 
 
-###Considerations
-TODO:
+###Routes/URLs to photos
+
+At the moment, the main feed and tag feeds have a unique route in the application, which is bookmarkable. Individual photos do not, as the Flickr public feed does not provide a unique ID or a way of loading an individual photo by ID. In order to have a route to photos, you could consider implementing the full [Flickr API](http://www.flickr.com/services/api/).
+
+###Twitter Bootstrap
+The full Twitter bootstrap has been used, but only a small part of it is used. If using in production you should consider using a [customised version](http://getbootstrap.com/customize/) (disabled for RC3.0).
+
+Alternatively, the site styles and modal dialog script could easily be rewritten, removing the need for Bootstrap altogether.
+
+###Server side rendering
+Server side rendering will speed up initial page loads and SEO, which for a production site can bevery important. You can consider technologies such as [Hogan.js](http://twitter.github.io/hogan.js/) to render Mustache templates on the server, or [rendr](https://github.com/airbnb/rendr) and [Meteor](http://www.meteor.com) to render Backbone.js apps on the server. Alternatively, [Derby](http://derbyjs.com) is another MVC framework that allows server side rendering.
