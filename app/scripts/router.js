@@ -1,11 +1,10 @@
 /*global define*/
 
 define([
-    'jquery',
     'backbone',
     'views/photos-view',
     'collections/photo-collection'
-], function ($, Backbone, PhotosView, PhotoCollection) {
+], function (Backbone, PhotosView, PhotoCollection) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({

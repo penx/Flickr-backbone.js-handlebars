@@ -179,7 +179,17 @@ Finally, build and run the project
 
 	grunt server
 
-
 ##Creating a production ready site
 
+###Compiling
+There was a minor bug in the yeoman generator/backbone [which I think](https://github.com/yeoman/generator-backbone/issues/112) [has now been fixed](https://github.com/yeoman/generator-backbone/commit/2d962e711f8a390a429ddbf224902dfd454eb195), in order to compile for production I had to:
+
+1. edit Gruntfile.js and comment out the line:
+
+		// wrap: true
+
+2. compile using `grunt` or compile and run using `grunt server:dist`
+
+
+###Considerations
 TODO:

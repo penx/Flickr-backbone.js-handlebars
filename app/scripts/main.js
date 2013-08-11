@@ -33,12 +33,12 @@ require.config({
 
 require([
     'backbone', 'router', 'handlebars', 'moment'
-], function (Backbone, AppRouter, Handlebars, Moment) {
-    var router = new AppRouter;
+], function (Backbone, AppRouter, Handlebars, moment) {
+    new AppRouter();
 
-    Handlebars.registerHelper( {
+    Handlebars.registerHelper({
         authorName: function(author) {
-            return /\(([^\)]*)\)/.exec(author)[1];
+            return (/\(([^\)]*)\)/).exec(author)[1];
         },
         dateformat: function(date) {
             return moment(date).format('Do MMMM YYYY [at] HH:mm');

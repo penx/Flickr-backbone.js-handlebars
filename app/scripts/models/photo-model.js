@@ -1,9 +1,9 @@
+/*jslint nomen: true, plusplus: true, browser: true, regexp: true */
 /*global define*/
 
 define([
-    'underscore',
     'backbone'
-], function (_, Backbone) {
+], function (Backbone) {
     'use strict';
 
     var PhotoModel = Backbone.Model.extend({
