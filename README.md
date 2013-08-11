@@ -56,9 +56,9 @@ Add JavaScript library dependencies with bower, edit bower.json and add:
 
     "moment": "~2.1.0"
 
-Then run:
+Then install the new dependency by running:
 
-	bower install momentjs
+	bower install
 
 Clean up the sample content from index.html, add an id to the container and add a new container for an overlay i.e.:
 
@@ -80,6 +80,10 @@ At the time of writing, bootstrap 2.3.0 is installed by the yeoman generator. Th
 We can also remove:
 
     "sass-bootstrap": "~2.3.0",
+
+Install the new dependency by again running:
+
+	bower install
 
 Comment out the first 2 lines in app/styles/main.scss, :
 
