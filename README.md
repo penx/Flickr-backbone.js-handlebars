@@ -1,6 +1,6 @@
 #Flickr-backbone.js-handlebars
 
-A simple client for the Flickr Public API using Backbone.js, Handlebars, RequireJS, Twitter Bootstrap and Yeoman.
+A tutorial single page application for consuming the [Flickr Public Feed](http://www.flickr.com/services/feeds/docs/photos_public/) using [Backbone.js](http://backbonejs.org), [Handlebars](http://handlebarsjs.com), [RequireJS](http://requirejs.org), [Twitter Bootstrap](http://getbootstrap.com) and [Yeoman](http://yeoman.io).
 
 ## Installation
 
