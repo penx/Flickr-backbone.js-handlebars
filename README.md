@@ -205,4 +205,4 @@ The full Twitter bootstrap has been included, but only a small part of it is use
 Alternatively, the site styles and modal dialog script could easily be rewritten, removing the need for Bootstrap altogether.
 
 ###Server side rendering
-Server side rendering will speed up initial page loads and SEO, which for a production site can bevery important. You can consider technologies such as [Hogan.js](http://twitter.github.io/hogan.js/) to render Mustache templates on the server, or [rendr](https://github.com/airbnb/rendr) and [Meteor](http://www.meteor.com) to render Backbone.js apps on the server. Alternatively, [Derby](http://derbyjs.com) is another MVC framework that allows server side rendering.
+Server side rendering will speed up initial page loads and SEO, which for a production site can be very important. You can consider technologies such as [Hogan.js](http://twitter.github.io/hogan.js/) to render Mustache templates on the server, or [rendr](https://github.com/airbnb/rendr) and [Meteor](http://www.meteor.com) to render Backbone.js apps on the server. Alternatively, [Derby](http://derbyjs.com) is another MVC framework that allows server side rendering.
