@@ -200,7 +200,7 @@ There was a minor bug in the yeoman generator/backbone [which I think](https://g
 At the moment, the main feed and tag feeds have a unique route in the application, which is bookmarkable. Individual photos do not, as the Flickr public feed does not provide a unique ID or a way of loading an individual photo by ID. In order to have a route to photos, you could consider implementing the full [Flickr API](http://www.flickr.com/services/api/).
 
 ###Twitter Bootstrap
-The full Twitter bootstrap has been used, but only a small part of it is used. If using in production you should consider using a [customised version](http://getbootstrap.com/customize/) (disabled for RC3.0).
+The full Twitter bootstrap has been included, but only a small part of it is used. If using in production you should consider using a [customised version](http://getbootstrap.com/customize/) (disabled for RC3.0).
 
 Alternatively, the site styles and modal dialog script could easily be rewritten, removing the need for Bootstrap altogether.
 
